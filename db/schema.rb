@@ -10,7 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_03_232604) do
+ActiveRecord::Schema.define(version: 2019_08_04_190941) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "items", force: :cascade do |t|
+    t.string "nombre"
+    t.string "codigo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "scores", force: :cascade do |t|
+    t.string "nombre"
+    t.date "tiempo1"
+    t.date "tiempo2"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "student_allergies", force: :cascade do |t|
     t.string "student_id"
@@ -37,14 +55,20 @@ ActiveRecord::Schema.define(version: 2019_08_03_232604) do
     t.date "fecha_alta"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "tel_padre"
     t.string "tel_madre"
+    t.string "tel_padre"
+  end
+
+  create_table "tables", force: :cascade do |t|
+    t.string "nombre"
+    t.integer "edad"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
     t.string "nombre"
-    t.string "password"
-    t.string "tipo"
+    t.integer "edad"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
