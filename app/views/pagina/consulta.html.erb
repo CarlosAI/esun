@@ -1,0 +1,71 @@
+<div style="padding-left: 150px; padding-top: 80px; width: 650px; ">
+	
+
+
+	  <h1>Consulta de Alumnos</h1>
+	  <hr>
+	  <br>
+
+	    <div class="form-group">
+	    	<label>Nombre</label>
+	      <input type="text" class="form-control" id="nombre_bus" placeholder="Usuario" name="nombre">
+	    </div>
+	   
+	    <button type="button" onclick="consulta()" class="btn btn-success">Buscar</button>
+
+	    <br>
+	    <br>
+	    <h2>Informacion:</h2>
+	    <div style="width: 600px; height: 400px; border-radius: 10px; border-color: black; border-style: solid">
+	    	<p id="nombre"></p>
+		    <p id="fecha_alta"></p>
+		    <p id="genero"></p>
+		    <p id="domicilio"></p>
+		    <p id="nombre_padre"></p>
+		    <p id="nombre_madre"></p>
+		    <p id="telefono_contacto"></p>
+	    </div>
+
+
+</div>
+
+<style type="text/css">
+	.col{
+		padding-left: 0;
+	}
+	p{
+		font-size: 25px;
+	}
+</style>
+
+<script type="text/javascript">
+	
+
+	function consulta(){
+		var nombre = $("#nombre_bus").val();
+
+	
+		 $.ajax({
+	      type:"POST", 
+	      url:"/consulta_alumno", 
+	      data: {  nombre: nombre},
+	      dataType: 'json',
+	      success:function(result){
+	      	if(result[0]==200){
+	      		console.log(result)
+	      		$("#nombre").text("Nombre: " + result[1])
+	      		$("#fecha_alta").text("Fecha de alta: " + result[2])
+	      		$("#genero").text("Genero: " + result[3])
+	      		$("#domicilio").text("Domicilio: "+  result[4])
+	      		$("#nombre_padre").text("Nombre del padre: "+  result[5])
+	      		$("#nombre_madre").text("Nombre de la madre: " + result[6])
+	      		$("#telefono_contacto").text("Contacto: "+  result[7])
+	      	}else{
+	      		$("#nombre").text("Alumno no encontrado")
+	      	}
+	      },error:function(result){
+	      	alert("nel")
+	      }
+	    });
+	}
+</script>

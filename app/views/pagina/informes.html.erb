@@ -1,0 +1,61 @@
+<div style="padding-left: 150px; padding-top: 80px; width: 650px; ">
+	
+
+
+	  <h1>Informes</h1>
+	  <hr>
+	  <br>
+
+	    <div class="form-group">
+	    	
+	         <div class="list-group" id="list-tab" role="tablist">
+		      <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Semanal</a>
+		      <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Mensual</a>
+		      <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Anual</a>
+			</div> 
+	    </div>
+	    <%= link_to "Generar", "reporte.pdf", :class => "btn btn-success", target: "_blank" %>
+
+
+</div>
+
+<style type="text/css">
+	.col{
+		padding-left: 0;
+	}
+	p{
+		font-size: 25px;
+	}
+</style>
+
+<script type="text/javascript">
+	
+
+	function consulta(){
+		var nombre = $("#nombre_bus").val();
+
+	
+		 $.ajax({
+	      type:"POST", 
+	      url:"/consulta_alumno", 
+	      data: {  nombre: nombre},
+	      dataType: 'json',
+	      success:function(result){
+	      	if(result[0]==200){
+	      		console.log(result)
+	      		$("#nombre").text("Nombre: " + result[1])
+	      		$("#fecha_alta").text("Fecha de alta: " + result[2])
+	      		$("#genero").text("Genero: " + result[3])
+	      		$("#domicilio").text("Domicilio: "+  result[4])
+	      		$("#nombre_padre").text("Nombre del padre: "+  result[5])
+	      		$("#nombre_madre").text("Nombre de la madre: " + result[6])
+	      		$("#telefono_contacto").text("Contacto: "+  result[7])
+	      	}else{
+	      		$("#nombre").text("Alumno no encontrado")
+	      	}
+	      },error:function(result){
+	      	alert("nel")
+	      }
+	    });
+	}
+</script>

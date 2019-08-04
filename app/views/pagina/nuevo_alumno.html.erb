@@ -1,0 +1,94 @@
+<div style="padding-left: 150px; padding-top: 80px; width: 650px; ">
+	
+
+
+	  <h1>Nuevo Alumno</h1>
+	  <hr>
+	  <br>
+
+	    <div class="form-group">
+	      <input type="text" class="form-control" id="nombre" placeholder="Nombre" name="nombre">
+	    </div>
+	    <div class="form-group">
+	      <input type="text" class="form-control" id="app1" placeholder="Apellido Paterno" name="app1">
+	    </div>
+	    <div class="form-group">
+	      <input type="text" class="form-control" id="app1" placeholder="Apellido Materno" name="app2">
+	    </div>
+	    <div class="form-group">
+    		<label for="uname">Genero</label>
+	    	<select class="custom-select" id="inputGroupSelect01">
+		    	<option selected>Masculino</option>
+		    	<option value="1">Femenino</option>
+			</select>
+	    </div>
+	    <div class="form-group">
+	      <input type="text" class="form-control" id="domicilio" placeholder="Domicilio" name="domicilio">
+	    </div>
+	    <div class="form-group">
+	  		<div class="col" style="width: 50%; float: left;">
+	  			<input type="text" class="form-control" id="nombre_padre" placeholder="Nombre del padre" name="nombre1">
+	  		</div>
+	  		<div class="col" style="width: 50%; float: left;">
+	  			<input type="text" class="form-control" id="tel1" placeholder="Telefono" name="tel1">
+	  		</div>
+	    </div>
+	    <br>
+	    <br>
+	     <div class="form-group">
+	  		<div class="col" style="width: 50%; float: left;">
+	  			<input type="text" class="form-control" id="nombre_madre" placeholder="Nombre de la madre" name="nombre1">
+	  		</div>
+	  		<div class="col" style="width: 50%; float: left;">
+	  			<input type="text" class="form-control" id="tel2" placeholder="Telefono" name="tel1">
+	  		</div>
+	    </div>
+	    <br>
+	    <br>
+
+
+	    <div class="form-group">
+	      <input type="text" class="form-control" id="contacto" placeholder="Contacto de emergencia" name="contacto">
+	    </div>
+
+	    <button type="button" onclick="nuevo()" class="btn btn-primary btn-lg btn-block">Registrar</button>
+
+
+</div>
+
+<style type="text/css">
+	.col{
+		padding-left: 0;
+	}
+</style>
+
+<script type="text/javascript">
+	
+
+	function nuevo(){
+		var contacto = $("#contacto").val();
+		var nombre = $("#nombre").val();
+		var app1 = $("#app1").val();
+		var app2 = $("#app2").val();
+		var domicilio = $("#domicilio").val();
+		var nombre_padre = $("#nombre_padre").val();
+		var tel1 = $("#tel1").val();
+		var nombre_madre = $("#nombre_madre").val();
+		var tel2 = $("#tel2").val();
+		var genero = $("#inputGroupSelect01").val();
+
+		console.log(contacto)
+		 $.ajax({
+	      type:"POST", 
+	      url:"/crear_alumno", 
+	      data: { contacto: contacto, nombre: nombre, app1: app1, app2: app2, domicilio: domicilio, nombre_padre: nombre_padre, tel1: tel1, nombre_madre: nombre_madre, tel2: tel2, genero: genero},
+	      dataType: 'json',
+	      success:function(result){
+	      	alert("Alumno Guardado")
+	      	location.reload();
+	      },error:function(result){
+	      	alert("nel")
+	      }
+	    });
+	}
+</script>

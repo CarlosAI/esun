@@ -1,0 +1,2 @@
+class StudentObservation < ApplicationRecord
+end

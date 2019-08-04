@@ -1,0 +1,51 @@
+<div style="padding-left: 150px; padding-top: 80px; width: 1200px; ">
+
+<h1>Eliminar Usuario</h1>
+	  <hr>
+	  <br>	
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Contraseña</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @usuarios.each_with_index do |x,i| %>
+      <tr>
+        <th scope="row"><%= i + 1%></th>
+        <td><%= x.nombre %> </td>
+        <td><%= x.password %> </td>
+        <td><a onclick="eliminar(<%= x.id %>)" type="button" class="btn btn-danger">Eliminar</a></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+</div>
+
+<style type="text/css">
+	.col{
+		padding-left: 0;
+	}
+</style>
+
+<script type="text/javascript">
+  function eliminar(el_id){
+    console.log(el_id)
+    $.ajax({
+        type:"POST", 
+        url:"/eliminar_a_user", 
+        data: {el_id: el_id},
+        dataType: 'json',
+        success:function(result){
+          alert("Usuario Eliminado")
+          location.reload();
+        },error:function(result){
+          alert("nel")
+        }
+      });
+  }
+</script>

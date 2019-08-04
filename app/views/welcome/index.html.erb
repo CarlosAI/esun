@@ -1,0 +1,51 @@
+<center>
+	<div style="width: 1086px; height: 504px; background-color: white; margin-top: 12%; border-radius: 60px;">
+		<div class="col" style="width: 30%; float: left;">
+			<%= image_tag("guarderia.jpg", :alt => "rss feed") %>
+		</div>
+		<div class="col" style="width: 40%; float: right; padding-top: 13%; margin-right: 75px;">
+		
+				<h4>¡Bienvenido!</h4>
+			  <div class="form-group">
+			    <input type="text" class="form-control" id="user" placeholder="Usuario">
+			  </div>
+			  <div class="form-group">
+			    <input type="text" class="form-control" id="pass" placeholder="Contraseña">
+			  </div>
+			  <button type="button" onclick="verificar()" class="btn btn-primary btn-lg btn-block">Entrar</button>
+		
+		</div>
+	
+	</div>
+</center>
+
+<style type="text/css">
+	img{
+		padding-top: 20px;
+		width: 200%;
+	}
+</style>
+
+<script type="text/javascript">
+
+	function verificar(){
+		var pass = $("#pass").val();
+		var nombre = $("#user").val();
+		console.log()
+		$.ajax({
+	      type:"POST", 
+	      url:"/verificar", 
+	      data: {pass: pass, user: nombre},
+	      dataType: 'json',
+	      success:function(result){
+	      	if(result == 200){
+	      		window.location.href = "/pagina/index"
+	      	}else{
+	      		alert("Usuario y/o contraseña invalido")
+	      	}
+	      },error:function(result){
+	      	alert("Error")
+	      }
+	    });
+	}
+</script>

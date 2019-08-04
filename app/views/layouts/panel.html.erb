@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Esun</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+      <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  </head>
+
+  <body>
+    <div class="row">
+      <div class="col" style="width: 30%">
+        <div style="width: 450px; height: 100vh; background-color: rgb(68, 114, 196); padding-top: 30px;">
+          <div class="col" style="width: 30%; float: left;">
+            <%= image_tag("guar2.png", :alt => "rss feed") %>
+          </div>
+          <div class="col" style="width: 40%; float: right; padding-top: 13%; margin-right: 35px;">
+            <h2 style="color: white">Guarderia ABC</h4>
+          </div>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <hr>
+
+          <div style="float: left; padding-top: 60px;">
+             <button style="color: white; font-size: 28px; margin-left: 20px;"type="button" class="btn btn-link" data-toggle="collapse" data-target="#demo">Administrar Usuarios</button>
+              <div id="demo" class="collapse" style="background-color: white; border-radius: 30px; width: 70%; margin-left: 20px;">
+                <a class="btn btn-link"style="color: black; font-size: 28px; margin-left: 20px;" href="/nuevo_user">Nuevo Usuario</a>
+                <a class="btn btn-link"style="color: black; font-size: 28px; margin-left: 20px;" href="/eliminar_user">Eliminar Usuario</a>
+              </div>
+          </div>
+
+          <div style="float: left; padding-top: 20px;">
+             <button style="color: white; font-size: 28px; margin-left: 20px;"type="button" class="btn btn-link" data-toggle="collapse" data-target="#demo2">Administrar Alumnos</button>
+              <div id="demo2" class="collapse" style="background-color: white; border-radius: 30px; width: 70%; margin-left: 20px;">
+                <a class="btn btn-link"style="color: black; font-size: 28px; margin-left: 20px;" href="/nuevo_alumno">Nuevo Alumno</a>
+                <a class="btn btn-link"style="color: black; font-size: 28px; margin-left: 20px;" href="/eliminar_alumno">Eliminar Alumno</a>
+              </div>
+          </div>
+
+          <div style="float: left; padding-top: 20px;">
+             <a class="btn btn-link"style="color: white; font-size: 28px; margin-left: 20px;" href="/informes">Informe de Finanzas</a>
+          </div>
+
+          <div style="float: left; padding-top: 20px;">
+             <a class="btn btn-link"style="color: white; font-size: 28px; margin-left: 20px;" href="/consulta">Consulta de Alumnos</a>
+          </div>
+
+           <div style="padding-top: 600px;">
+             <a class="btn btn-link"style="color: white; font-size: 28px; margin-left: 20px;" href="/">Salir</a>
+          </div>
+
+        </div>
+      </div>
+      <div class="col" style=""> <%= yield %></div>
+    </div>
+    
+   
+  </body>
+</html>
+
+<style type="text/css">
+  img{
+    width: 200%;
+  }
+  .col{
+    flex-grow: 0;
+  }
+</style>
